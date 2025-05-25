@@ -1,0 +1,36 @@
+<div class="kanban-board" style="margin: 20px">
+  <div class="toolbar" style="margin-bottom: 16px;">
+    <button (click)="onAddTaskClick()">+</button>
+  </div>
+
+  <div class="columns">
+    <app-column
+      *ngFor="let column of columns"
+      [column]="column"
+      [users]="users"
+    ></app-column>
+  
+    <div class="add-column-button-wrapper">
+      <button (click)="onAddColumnClick()">+</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" *ngIf="showTaskForm">
+  <div class="modal">
+    <app-task-form
+      [users]="users"
+      (save)="onSaveTask($event)"
+      (cancel)="onCancelTask()"
+    ></app-task-form>
+  </div>
+</div>
+
+<div class="modal-backdrop" *ngIf="showColumnForm">
+  <div class="modal">
+    <app-column-form
+      (save)="onSaveColumn($event)"
+      (cancel)="onCancelColumn()"
+    ></app-column-form>
+  </div>
+</div>

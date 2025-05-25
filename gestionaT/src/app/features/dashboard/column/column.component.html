@@ -1,0 +1,10 @@
+<div class="column">
+  <h3>{{ column.title }}</h3>
+
+  <div class="tasks">
+    <div class="task" *ngFor="let task of column.tasks">
+      <strong>{{ task.title }}</strong><br />
+      <small>{{ task.assignee }}</small>
+    </div>
+  </div>
+</div>

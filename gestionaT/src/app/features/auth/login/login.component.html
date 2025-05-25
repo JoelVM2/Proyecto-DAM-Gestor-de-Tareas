@@ -1,0 +1,8 @@
+<form (ngSubmit)="onSubmit()">
+    <label>Email:</label>
+    <input [(ngModel)]="email" name="email" required />
+    <label>Contraseña:</label>
+    <input [(ngModel)]="password" name="password" type="password" required />
+    <button type="submit">Entrar</button>
+    <div *ngIf="error" style="color:red">{{ error }}</div>
+  </form>

@@ -1,0 +1,110 @@
+.kanban-board {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  height: 100%;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+}
+
+.toolbar {
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-bottom: 1rem;
+  background-color: #007bff;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.columns {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  height: calc(100vh - 120px);
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.task {
+  background: #fefefe;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  cursor: default;
+  user-select: none;
+}
+
+.task strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #333;
+}
+
+.task small {
+  font-size: 13px;
+  color: #666;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 10px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.add-column-button-wrapper button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 48px;
+  color: #79b381;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.toolbar button{
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 48px;
+  color: #79b381;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}

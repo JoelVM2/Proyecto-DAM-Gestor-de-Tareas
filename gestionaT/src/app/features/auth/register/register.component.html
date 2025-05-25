@@ -1,0 +1,56 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+
+    <label>Usuario:</label>
+    <input
+      [(ngModel)]="username"
+      name="username"
+      #usernameRef="ngModel"
+      required
+      [class.error-border]="usernameRef.invalid && usernameRef.touched"
+    />
+    <div *ngIf="usernameRef.errors?.['required'] && usernameRef.touched" class="error-message">
+    El usuario es obligatorio.
+    </div>
+    <div *ngIf="usernameRef.errors?.['userExists'] && usernameRef.touched" class="error-message">
+    El usuario ya existe. Elige otro distinto.
+    </div>
+  
+    <label>Email:</label>
+    <input
+      [(ngModel)]="email"
+      name="email"
+      type="email"
+      #emailRef="ngModel"
+      required
+      email
+      [class.error-border]="emailRef.invalid && emailRef.touched"
+    />
+    <div *ngIf="emailRef.errors?.['required'] && emailRef.touched" class="error-message">
+      El email es obligatorio.
+    </div>
+    <div *ngIf="emailRef.errors?.['email'] && emailRef.touched" class="error-message">
+      Introduce un email válido.
+    </div>
+  
+    <label>Contraseña:</label>
+    <input
+      [(ngModel)]="password"
+      name="password"
+      type="password"
+      #passwordRef="ngModel"
+      required
+      minlength="4"
+      [class.error-border]="passwordRef.invalid && passwordRef.touched"
+    />
+    <div *ngIf="passwordRef.errors?.['required'] && passwordRef.touched" class="error-message">
+      La contraseña es obligatoria.
+    </div>
+    <div *ngIf="passwordRef.errors?.['minlength'] && passwordRef.touched" class="error-message">
+      La contraseña debe tener al menos 4 caracteres.
+    </div>
+  
+    <button type="submit" [disabled]="form.invalid">Registrar</button>
+  
+    <div *ngIf="error" style="color:red; margin-top:10px;">{{ error }}</div>
+  </form>
+  
