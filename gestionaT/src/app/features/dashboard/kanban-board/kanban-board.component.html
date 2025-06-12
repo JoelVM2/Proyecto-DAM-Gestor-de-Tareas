@@ -1,15 +1,16 @@
 <div class="kanban-board" style="margin: 20px">
-  <div class="toolbar" style="margin-bottom: 16px;">
-    <button (click)="onAddTaskClick()">+</button>
-  </div>
-
+  <div class="toolbar" style="margin-bottom: 16px;"></div>
   <div class="columns">
     <app-column
       *ngFor="let column of columns"
       [column]="column"
       [users]="users"
+      (addTaskClick)="onAddTaskClick(column)"
+      (taskSelected)="onTaskSelected($event)"
+      (taskDropped)="onTaskDropped($event)"
+      [connectedTo]="getConnectedTo(column.title)"
     ></app-column>
-  
+
     <div class="add-column-button-wrapper">
       <button (click)="onAddColumnClick()">+</button>
     </div>
@@ -17,20 +18,26 @@
 </div>
 
 <div class="modal-backdrop" *ngIf="showTaskForm">
-  <div class="modal">
     <app-task-form
       [users]="users"
       (save)="onSaveTask($event)"
       (cancel)="onCancelTask()"
     ></app-task-form>
-  </div>
+</div>
+
+<div class="modal-backdrop" *ngIf="showEditTaskForm">
+    <app-task-card
+      [task]="selectedTask"
+      [users]="users"
+      (update)="onUpdateTask($event)"
+      (cancel)="onCancelEditTask()"
+      (delete)="onDeleteTask()"
+    ></app-task-card> 
 </div>
 
 <div class="modal-backdrop" *ngIf="showColumnForm">
-  <div class="modal">
     <app-column-form
       (save)="onSaveColumn($event)"
       (cancel)="onCancelColumn()"
     ></app-column-form>
-  </div>
 </div>

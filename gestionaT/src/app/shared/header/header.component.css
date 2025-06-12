@@ -49,20 +49,29 @@ header {
     list-style: none;
     padding: 0;
     margin: 0;
+    font-size: 22px;
   }
   
   .side-menu li {
+    margin-top: 25px;
     margin-bottom: 15px;
   }
   
   .side-menu a {
-    color: #212121;
     text-decoration: none;
+    color: white;
     font-weight: 600;
+    text-shadow:
+    -1px -1px 0 #409b5d,
+    1px -1px 0 #409b5d,
+    -1px  1px 0 #409b5d,
+    1px  1px 0 #409b5d;
   }
-  
+
   .side-menu a:hover {
-    text-decoration: underline;
-    color: #1b5e20;
+    text-decoration: none;
+    font-size: 24px;
+    margin-left: 10px;
+    color: white;
   }
   

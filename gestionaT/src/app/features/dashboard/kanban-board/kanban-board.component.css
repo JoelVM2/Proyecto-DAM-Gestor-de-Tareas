@@ -1,12 +1,13 @@
 .kanban-board {
   display: flex;
   gap: 10px;
-  padding: 20px;
+  padding-left: 40px;
   height: 100%;
   background: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
+  margin-left: 40px;
 }
 
 .toolbar {
@@ -23,10 +24,6 @@ button {
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 .columns {
@@ -88,17 +85,6 @@ button:hover {
 }
 
 .add-column-button-wrapper button {
-  background: none;
-  border: none;
-  font-weight: bold;
-  font-size: 48px;
-  color: #79b381;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-}
-
-.toolbar button{
   background: none;
   border: none;
   font-weight: bold;

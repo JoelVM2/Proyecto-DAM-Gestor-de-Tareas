@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './column-form.component.html',
+  styleUrls: ['./column-form.component.css'],
 })
 export class ColumnFormComponent {
   columnTitle: string = '';

@@ -1,1 +1,22 @@
-<p>task-card works!</p>
+<div class="task-card">
+    <h2>Editar Tarea</h2>
+    
+    <label>Título:</label>
+    <input [(ngModel)]="editedTask.title" required />
+    
+    <label>Descripción:</label>
+    <textarea [(ngModel)]="editedTask.description" required></textarea>
+    
+    <label>Asignar a:</label>
+    <select [(ngModel)]="editedTask.assignee">
+      <option [ngValue]="null">Sin asignar</option>
+      <option *ngFor="let user of users" [value]="user">{{ user }}</option>
+    </select>
+
+    <div class="buttons">
+        <button (click)="onSave()">Guardar</button>
+        <button (click)="onCancel()">Cancelar</button>
+        <button (click)="onDelete()" class="delete-button">Eliminar</button>
+      </div>
+  </div>
+  

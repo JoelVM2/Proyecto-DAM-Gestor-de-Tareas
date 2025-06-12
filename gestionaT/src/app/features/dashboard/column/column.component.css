@@ -14,14 +14,70 @@
 }
 
 .column:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid #67e78e;
 }
 
 .column h3 {
-  margin: 0 0 12px;
   font-weight: 700;
-  font-size: 18px;
-  color: #222;
-  border-bottom: 2px solid #3fb570;
+  font-size: 22px;
+  color: white;
   padding-bottom: 6px;
+  text-shadow:
+  -1px -1px 0 #79b381,
+  1px -1px 0 #79b381,
+  -1px  1px 0 #79b381,
+  1px  1px 0 #79b381;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;   
+  border-bottom: 2px solid #3fb570;
+}
+
+.task-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 48px;
+  color: #79b381;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.tasks {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.task {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  padding: 10px 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: default;
+  transition: background-color 0.2s ease;
+}
+
+.task:hover {
+  border: 2px solid #a6eebb;
+}
+
+.task b {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #79b381;
+}
+
+.task small {
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
 }

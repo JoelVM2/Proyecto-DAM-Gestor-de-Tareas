@@ -1,48 +1,42 @@
+import { CommonModule } from '@angular/common';  // Importa CommonModule
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css'],
   standalone: true,
-  imports: [FormsModule], // Incluye FormsModule aquí
+  imports: [FormsModule, CommonModule],
 })
 export class TaskFormComponent {
   @Input() users: string[] = [];
   @Output() save = new EventEmitter<{ title: string; description: string; assignee: string | null }>();
   @Output() cancel = new EventEmitter<void>();
 
-  isVisible = false;
   title = '';
   description = '';
   assignee: string | null = null;
 
-  open() {
-    this.isVisible = true;
-  }
-
-  close() {
-    this.isVisible = false;
-  }
-
   onSubmit() {
-    const task = {
-      title: this.title,
-      description: this.description,
-      assignee: this.assignee || '',
-    };
-    this.save.emit(task);
-    this.close();
-  }
-
-  onSaveTask(task: { title: string; assignee: string | null }) {
-    const assignee = task.assignee || 'Sin asignar'; // Maneja el caso en que sea null
-    console.log(`Tarea guardada: ${task.title}, Asignada a: ${assignee}`);
+    if (this.title && this.description) {
+      this.save.emit({
+        title: this.title,
+        description: this.description,
+        assignee: this.assignee,
+      });
+      this.resetForm();
+    }
   }
 
   onCancel() {
     this.cancel.emit();
-    this.close();
+    this.resetForm();
+  }
+
+  private resetForm() {
+    this.title = '';
+    this.description = '';
+    this.assignee = null;
   }
 }

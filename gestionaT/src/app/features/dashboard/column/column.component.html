@@ -1,10 +1,25 @@
 <div class="column">
-  <h3>{{ column.title }}</h3>
+  <div class="column-header">
+    <h3>{{ column.title }}</h3>
+    <button class="task-btn" (click)="addTask()">+</button>
+  </div>
 
-  <div class="tasks">
-    <div class="task" *ngFor="let task of column.tasks">
-      <strong>{{ task.title }}</strong><br />
-      <small>{{ task.assignee }}</small>
+  <div
+    class="tasks"
+    cdkDropList
+    [id]="columnId"
+    [cdkDropListData]="column.tasks"
+    [cdkDropListConnectedTo]="connectedTo"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      class="task"
+      *ngFor="let task of column.tasks"
+      cdkDrag
+      (click)="selectTask(task)"
+    >
+      <b>{{ task.title }}</b><br />
+      <small>{{ task.assignee || 'Sin asignar' }}</small>
     </div>
   </div>
 </div>

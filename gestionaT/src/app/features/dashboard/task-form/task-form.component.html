@@ -1,24 +1,22 @@
-<div class="modal" [class.show]="isVisible">
-  <div class="modal-content">
-    <form (ngSubmit)="onSubmit()">
-      <h2>Crear Tarea</h2>
+<div class="modal-content">
+  <form (ngSubmit)="onSubmit()">
+    <h2>Crear Tarea</h2>
 
-      <label for="title">Título de la tarea:</label>
-      <input id="title" [(ngModel)]="title" name="title" required />
+    <label for="title">Título de la tarea:</label>
+    <input id="title" [(ngModel)]="title" name="title" required />
 
-      <label for="description">Descripción:</label>
-      <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
+    <label for="description">Descripción:</label>
+    <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
 
-      <label for="assignee">Asignar a:</label>
-      <select id="assignee" [(ngModel)]="assignee" name="assignee">
-        <option value="" disabled>Selecciona un usuario</option>
-        <option *ngFor="let user of users" [value]="user">{{ user }}</option>
-      </select>
+    <label for="assignee">Asignar a:</label>
+    <select id="assignee" [(ngModel)]="assignee" name="assignee">
+      <option value="" disabled>Selecciona un usuario</option>
+      <option *ngFor="let user of users" [value]="user">{{ user }}</option>
+    </select>
 
-      <div class="modal-actions">
-        <button type="submit">Guardar</button>
-        <button type="button" (click)="onCancel()">Cancelar</button>
-      </div>
-    </form>
-  </div>
+    <div class="modal-actions">
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
 </div>
