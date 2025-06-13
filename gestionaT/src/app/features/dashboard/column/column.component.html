@@ -1,7 +1,23 @@
 <div class="column">
   <div class="column-header">
-    <h3>{{ column.title }}</h3>
+    <div *ngIf="!isEditingTitle; else editTitleTemplate">
+      <h3 (click)="enableEditTitle()">{{ column.name }}</h3>
+    </div>
+    <ng-template #editTitleTemplate>
+      <input
+        type="text"
+        [(ngModel)]="editableTitle"
+        (blur)="saveTitle()"
+        (keyup.enter)="saveTitle()"
+        (keyup.esc)="cancelEditTitle()"
+        autofocus
+      />
+    </ng-template>
+
+    <div class="buttons-group">
     <button class="task-btn" (click)="addTask()">+</button>
+    <button class="delete-btn" (click)="triggerDeleteConfirm()">-</button>
+  </div>
   </div>
 
   <div
@@ -19,7 +35,15 @@
       (click)="selectTask(task)"
     >
       <b>{{ task.title }}</b><br />
-      <small>{{ task.assignee || 'Sin asignar' }}</small>
+      <small>{{ getUserNameById(task.assignedTo) }}</small>
     </div>
+  </div>
+</div>
+
+<div *ngIf="showConfirm" class="confirm-overlay">
+  <div class="confirm-box">
+    <p>¿Eliminar la columna "{{ column.name }}"?</p>
+    <button class="btnConfirm" (click)="confirmDelete()">Sí</button>
+    <button class="btnCancel" (click)="cancelDelete()">Cancelar</button>
   </div>
 </div>

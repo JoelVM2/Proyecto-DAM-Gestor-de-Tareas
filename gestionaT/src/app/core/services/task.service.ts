@@ -7,7 +7,7 @@ import { Task } from '../../models/task.model';
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'https://localhost:5001/api/tasks';
+  private apiUrl = 'http://localhost:5016/api/tasks';
 
   constructor(private http: HttpClient) {}
 
@@ -23,9 +23,9 @@ export class TaskService {
     return this.http.post<Task>(this.apiUrl, task);
   }
 
-  updateTask(id: number, task: Task): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, task);
-  }
+  updateTask(id: number, task: Task): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}/${id}`, task);
+  }  
 
   deleteTask(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);

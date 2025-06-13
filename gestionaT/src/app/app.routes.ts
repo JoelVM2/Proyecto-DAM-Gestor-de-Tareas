@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
   {
     path: 'login',
     loadComponent: () =>
@@ -15,14 +16,14 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./features/dashboard/kanban-board/kanban-board.component').then(m => m.KanbanBoardComponent),
-    canActivate: [AuthGuard]
+      import('./features/dashboard/kanban-board/kanban-board.component').then(m => m.KanbanBoardComponent)
   },
   {
     path: 'users',
+    canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./features/users/user-list/user-list.component').then(m => m.UserListComponent),
-    canActivate: [AuthGuard]
+      import('./features/users/user-list/user-list.component').then(m => m.UserListComponent)
   }
 ];

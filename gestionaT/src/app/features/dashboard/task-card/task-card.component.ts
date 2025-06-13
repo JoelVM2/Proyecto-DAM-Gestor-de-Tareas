@@ -1,6 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Task } from '../../../models/task.model';
+import { User } from '../../../models/user.model';
+
 
 @Component({
   selector: 'app-task-card',
@@ -9,17 +12,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.css']
 })
-export class TaskCardComponent {
-  @Input() task!: { title: string; description: string; assignee: string | null };
-  @Input() users: string[] = [];
-  @Output() update = new EventEmitter<{ title: string; description: string; assignee: string | null }>();
+export class TaskCardComponent implements OnInit {
+  @Input() task!: Task;
+  @Input() users: User[] = [];
+  @Output() update = new EventEmitter<Task>();
   @Output() cancel = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
 
-  editedTask = { title: '', description: '', assignee: null as string | null };
+  editedTask!: Task;
 
   ngOnInit() {
     this.editedTask = { ...this.task };
+    console.log('Usuarios recibidos en TaskCardComponent:', this.users);
   }
 
   onSave() {

@@ -1,8 +1,8 @@
 export interface Task {
-  id: number;
+  id?: number;
   title: string;
   description?: string;
-  assignedTo?: number;
+  assignedTo?: number | null;
   columnId: number;
   dueDate?: string;
 }

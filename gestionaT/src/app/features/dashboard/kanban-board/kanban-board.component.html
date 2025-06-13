@@ -2,13 +2,15 @@
   <div class="toolbar" style="margin-bottom: 16px;"></div>
   <div class="columns">
     <app-column
-      *ngFor="let column of columns"
-      [column]="column"
+      *ngFor="let col of columns"
+      [column]="col"
       [users]="users"
-      (addTaskClick)="onAddTaskClick(column)"
+      [connectedTo]="getConnectedTo(col.name)"
+      (addTaskClick)="onAddTaskClick(col)"
       (taskSelected)="onTaskSelected($event)"
       (taskDropped)="onTaskDropped($event)"
-      [connectedTo]="getConnectedTo(column.title)"
+      (columnUpdated)="onColumnUpdated($event)"
+      (columnDeleted)="onDeleteColumn($event)"
     ></app-column>
 
     <div class="add-column-button-wrapper">
@@ -25,14 +27,14 @@
     ></app-task-form>
 </div>
 
-<div class="modal-backdrop" *ngIf="showEditTaskForm">
-    <app-task-card
-      [task]="selectedTask"
-      [users]="users"
-      (update)="onUpdateTask($event)"
-      (cancel)="onCancelEditTask()"
-      (delete)="onDeleteTask()"
-    ></app-task-card> 
+<div class="modal-backdrop" *ngIf="showEditTaskForm && selectedTask">
+  <app-task-card
+    [task]="selectedTask"
+    [users]="users"
+    (update)="onUpdateTask($event)"
+    (cancel)="onCancelEditTask()"
+    (delete)="onDeleteTask()"
+  ></app-task-card>
 </div>
 
 <div class="modal-backdrop" *ngIf="showColumnForm">

@@ -7,12 +7,16 @@ import { Column } from '../../models/column.model';
   providedIn: 'root',
 })
 export class ColumnService {
-  private apiUrl = 'https://localhost:5001/api/columns';
+  private apiUrl = 'http://localhost:5016/api/columns';
 
   constructor(private http: HttpClient) {}
 
   getColumns(): Observable<Column[]> {
     return this.http.get<Column[]>(this.apiUrl);
+  }
+
+  getColumnsByBoard(boardId: number): Observable<Column[]> {
+    return this.http.get<Column[]>(`${this.apiUrl}/board/${boardId}`);
   }
 
   getColumn(id: number): Observable<Column> {
@@ -23,10 +27,10 @@ export class ColumnService {
     return this.http.post<Column>(this.apiUrl, column);
   }
 
-  updateColumn(id: number, column: Column): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, column);
+  updateColumn(id: number, column: Column) {
+    return this.http.put<Column>(`${this.apiUrl}/${id}`, column);
   }
-
+  
   deleteColumn(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NgIf } from '@angular/common';   // IMPORTA NgIf
+import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, RouterLink],
 })
 export class RegisterComponent {
   username = '';
@@ -16,22 +18,39 @@ export class RegisterComponent {
   password = '';
   error = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   onSubmit(form: NgForm) {
-    if (this.username.toLowerCase() === 'testuser') {
-      form.controls['username'].setErrors({ userExists: true });
-      this.error = '';
-      return;
-    }
+    if (form.invalid) return;
 
-    // Si todo va bien, borramos errores y seguimos
-    form.controls['username'].setErrors(null);
-    this.error = '';
+    const newUser = {
+      username: this.username,
+      email: this.email,
+      password: this.password,
+      role: 'member'
+    };
 
-    // Simular registro correcto:
-    const token = 'token-prueba';
-    this.authService.login(token);
-    this.router.navigate(['/dashboard']);
+    this.authService.register(newUser).subscribe({
+      next: (res: any) => {
+        console.log('Usuario registrado:', res);
+        this.authService.login(JSON.stringify({
+          id: res.id,
+          username: res.username
+        }));
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        if (err.status === 409) {
+          form.controls['username']?.setErrors({ userExists: true });
+        } else {
+          this.error = 'Error al registrar. Inténtalo más tarde.';
+          console.error(err);
+        }
+      }
+    });
   }
 }

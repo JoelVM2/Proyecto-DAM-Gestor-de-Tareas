@@ -13,65 +13,198 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
   
-  .menu-toggle {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: #212121;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  h2 {
-    margin: 0;
-    font-weight: 700;
-    color: #2e7d32;
-  }
-  
-  .side-menu {
-    position: fixed;
-    top: 50px;
-    left: -280px;
-    width: 250px;
-    height: calc(100vh - 50px);
-    background-color: #a5d6a7;
-    color: #212121;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    transition: left 0.3s ease;
-  }
-  
-  .side-menu.open {
-    left: 0;
-  }
-  
-  .side-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 22px;
-  }
-  
-  .side-menu li {
-    margin-top: 25px;
-    margin-bottom: 15px;
-  }
-  
-  .side-menu a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    text-shadow:
-    -1px -1px 0 #409b5d,
-    1px -1px 0 #409b5d,
-    -1px  1px 0 #409b5d,
-    1px  1px 0 #409b5d;
-  }
+.menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #212121;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
-  .side-menu a:hover {
-    text-decoration: none;
-    font-size: 24px;
-    margin-left: 10px;
-    color: white;
-  }
+h2 {
+  margin: 0;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.side-menu {
+  position: fixed;
+  top: 50px;
+  left: -280px;
+  width: 250px;
+  height: calc(100vh - 50px);
+  background-color: #a5d6a7;
+  color: #212121;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  transition: left 0.3s ease;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 22px;
+}
+
+.side-menu li {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  text-shadow:
+  -1px -1px 0 #409b5d,
+  1px -1px 0 #409b5d,
+  -1px  1px 0 #409b5d,
+  1px  1px 0 #409b5d;
+}
+
+.side-menu a:hover {
+  text-decoration: none;
+  font-size: 24px;
+  margin-left: 10px;
+  color: white;
+}
   
+  .invite-section,
+.boards-section {
+  margin-bottom: 30px;
+}
+
+.invite-section input {
+  width: calc(100% - 80px);
+  margin-right: 8px;
+}
+
+.invite-result {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px #409b5d;
+}
+
+.invite-section {
+  margin-bottom: 30px;
+}
+
+.invite-section h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px #409b5d;
+}
+
+.invite-section input {
+  width: calc(100% - 90px);
+  padding: 6px 8px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.invite-section button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #66bb6a;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.invite-section button:hover {
+  background-color: #4caf50;
+}
+
+.invite-result {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px #409b5d;
+}
+
+.boards-section {
+  margin-bottom: 30px;
+}
+
+.boards-section h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px #409b5d;
+}
+
+.boards-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.boards-section li {
+  margin-bottom: 12px;
+}
+
+.boards-section a {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.boards-section a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+.pending-invitations {
+  margin-top: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.pending-invitations h4 {
+  font-size: 16px;
+  color: white;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 2px #409b5d;
+}
+
+.pending-invitations ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.pending-invitations li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: white;
+}
+
+.pending-invitations button {
+  margin-left: 6px;
+  border: none;
+  border-radius: 4px;
+  background-color: #66bb6a;
+  color: white;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.pending-invitations button:hover {
+  background-color: #4caf50;
+}

@@ -8,11 +8,11 @@
     <label for="description">Descripción:</label>
     <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
 
-    <label for="assignee">Asignar a:</label>
-    <select id="assignee" [(ngModel)]="assignee" name="assignee">
-      <option value="" disabled>Selecciona un usuario</option>
-      <option *ngFor="let user of users" [value]="user">{{ user }}</option>
-    </select>
+    <label for="assignedTo">Asignar a:</label>
+    <select [(ngModel)]="assignedTo" name="assignedTo">
+      <option [ngValue]="null">Sin asignar</option>
+      <option *ngFor="let user of users" [ngValue]="user.id">{{ user.username }}</option>
+    </select>    
 
     <div class="modal-actions">
       <button type="submit">Guardar</button>
